@@ -117,19 +117,6 @@
 </div      >
 
 
-<!-- breadcrumb -->
-<div class="container">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="index.html" class="stext-109 cl8 hov-cl1 trans-04">
-            Home
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
-
-        <span class="stext-109 cl4">
-				Shoping Cart
-			</span>
-    </div>
-</div>
 
 
 <!-- Shoping Cart -->
@@ -139,7 +126,7 @@
             <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
                 <div class="m-l-25 m-r--38 m-lr-0-xl">
                     <div class="wrap-table-shopping-cart">
-                        <table th:each="item : ${cartItems}" class="table-shopping-cart">
+                        <table class="table-shopping-cart">
                             <tr class="table_head">
                                 <th class="column-1">Product</th>
                                 <th class="column-2"></th>
@@ -148,7 +135,7 @@
                                 <th class="column-5">Action</th>
                             </tr>
 
-                            <tr class="table_row">
+                            <tr class="table_row" th:each="item : ${cartItems}" >
                                 <td class="column-1">
                                     <div class="how-itemcart1">
                                         <a th:href="@{/cart/remove/{productId}(productId=${item.product.id})}">
@@ -161,15 +148,9 @@
                                 <td class="column-2" th:text="${item.product.name}"></td>
                                 <td class="column-3" th:text="${item.product.price}"></td>
                                 <td class="column-4">
-                                    <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                        <a style="min-width: 26px" class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" onclick="updateQuantity('${item.product.id}', -1)">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </a>
-                                        <input type="number" id="quantity-${item.product.id}" name="quantity" min="1" th:value="${item.quantity}" class="mtext-104 cl3 txt-center num-product" onchange="updateQuantity('${item.product.id}', 0)">
-                                        <a style="min-width: 26px" class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" onclick="updateQuantity('${item.product.id}', 1)">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </a>
-                                    </div>
+
+                                        <input type="number" id="quantity-${item.product.id}" name="quantity" min="1" th:value="${item.quantity}" class="mtext-104 cl3 txt-center num-product" onchange="updateQuantity('${item.product.id}', 0)" >
+
                                 </td>
                                 <td class="column-5"><a th:href="@{/cart/remove/{productId}(productId=${item.product.id})}" class="btn btndanger btn-sm">Remove</a></td>
                             </tr>
@@ -268,6 +249,16 @@
 
 <th:block th:replace="layoutuser::footeruser"></th:block>
 
+
+
+<!-- Back to top -->
+<div class="btn-back-to-top" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="zmdi zmdi-chevron-up"></i>
+		</span>
+</div>
+
+
 <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 <script>
     function updateQuantity(productId, delta) {
@@ -296,16 +287,6 @@
         });
     }
 </script>
-
-<!-- Back to top -->
-<div class="btn-back-to-top" id="myBtn">
-		<span class="symbol-btn-back-to-top">
-			<i class="zmdi zmdi-chevron-up"></i>
-		</span>
-</div>
-
-
-
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
