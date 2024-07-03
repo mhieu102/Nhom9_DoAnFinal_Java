@@ -1,16 +1,14 @@
 package com.example.Nhom9_DoAnFinal_Java.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 @Table(name = "order_details")
 public class OrderDetail {
     @Id

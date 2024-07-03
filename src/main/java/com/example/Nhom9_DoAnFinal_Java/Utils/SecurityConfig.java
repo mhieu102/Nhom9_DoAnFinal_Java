@@ -37,7 +37,7 @@ public class SecurityConfig {
             Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers( "/css/**", "/js/**", "/", "/register", "/error", "/images/**", "/fonts/**", "/vendor/**")
+                        .requestMatchers("/css/**", "/js/**", "/images/**", "/fonts/**", "/vendor/**", "/", "/register", "/error", "/checkout", "/checkout/css/**", "/checkout/js/**", "/checkout/img/**", "/checkout/lib/**", "/checkout/scss/**", "/createOrder", "/orderFail", "/orderSuccess")
                         .permitAll()
                         .requestMatchers( "/products/edit/*", "/products/delete/*", "/categories/edit/*", "/categories/delete/*")
                         .hasAnyAuthority("ADMIN")
